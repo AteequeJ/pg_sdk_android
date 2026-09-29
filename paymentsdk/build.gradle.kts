@@ -1,3 +1,5 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -5,7 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.parcelize)
-    `maven-publish`
+    alias(libs.plugins.maven.publish)
 }
 
 android {
@@ -49,12 +51,6 @@ android {
         unitTests {
             isIncludeAndroidResources = true
             isReturnDefaultValues = true
-        }
-    }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
         }
     }
 }
@@ -106,44 +102,53 @@ dependencies {
 }
 
 // ---------------------------------------------------------------------------
-// Maven publishing: `./gradlew :paymentsdk:publishToMavenLocal` produces a
-// consumable AAR at com.pgsdk:paymentsdk:<version>. Wire in your own
-// repository credentials (Nexus/Artifactory/GitHub Packages) for CI publishes
-// — never hardcode credentials here, read them from env vars / gradle.properties
-// that are NOT checked into version control.
+// Maven publishing (com.vanniktech.maven.publish):
+//   ./gradlew :paymentsdk:publishToMavenLocal       local AAR in ~/.m2
+//   ./gradlew :paymentsdk:publishToMavenCentral     upload to the Central Portal
+//     (then press "Publish" at central.sonatype.com → Deployments), or
+//   ./gradlew :paymentsdk:publishAndReleaseToMavenCentral   upload + release
+//
+// Central credentials and the GPG key come from ~/.gradle/gradle.properties
+// (mavenCentralUsername / mavenCentralPassword, signing.* or
+// signingInMemoryKey*) — never from this repo.
 // ---------------------------------------------------------------------------
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.pgsdk"
-            artifactId = "paymentsdk"
-            version = project.findProperty("sdkVersionName") as String? ?: "1.0.0"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-
-            pom {
-                name.set("PG Android Payment SDK")
-                description.set("Modular native Android Payment Gateway SDK (UPI / Card / Net Banking).")
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
-            }
-        }
+mavenPublishing {
+    configure(AndroidSingleVariantLibrary(variant = "release", sourcesJar = true, publishJavadocJar = true))
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    // Central rejects unsigned uploads; local publishes (sync_native.sh) work without a key.
+    if (providers.gradleProperty("signingInMemoryKey").isPresent ||
+        providers.gradleProperty("signing.keyId").isPresent
+    ) {
+        signAllPublications()
     }
 
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/OWNER/REPO")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+    coordinates(
+        groupId = "io.github.ateequej",
+        artifactId = "paymentsdk",
+        version = project.findProperty("sdkVersionName") as String? ?: "1.0.0"
+    )
+
+    pom {
+        name.set("PG Android Payment SDK")
+        description.set("Modular native Android Payment Gateway SDK (UPI / Card / Net Banking).")
+        url.set("https://github.com/AteequeJ/pg_sdk_android")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
             }
+        }
+        developers {
+            developer {
+                id.set("AteequeJ")
+                name.set("Ateeque Jamadar")
+                url.set("https://github.com/AteequeJ")
+            }
+        }
+        scm {
+            url.set("https://github.com/AteequeJ/pg_sdk_android")
+            connection.set("scm:git:https://github.com/AteequeJ/pg_sdk_android.git")
+            developerConnection.set("scm:git:ssh://git@github.com/AteequeJ/pg_sdk_android.git")
         }
     }
 }

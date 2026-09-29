@@ -32,14 +32,14 @@ your integration in parallel.
 
 ## Step 1 — Add the dependency
 
+The SDK is on Maven Central, which new projects already list in `settings.gradle.kts`:
+
 ```kotlin
 // settings.gradle.kts
 dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // Wherever your org publishes this SDK, e.g.:
-        maven { url = uri("https://maven.pkg.github.com/<OWNER>/<REPO>") }
     }
 }
 ```
@@ -47,9 +47,12 @@ dependencyResolutionManagement {
 ```kotlin
 // app/build.gradle.kts
 dependencies {
-    implementation("com.pgsdk:paymentsdk:<version>")
+    implementation("io.github.ateequej:paymentsdk:1.0.0")
 }
 ```
+
+To try unreleased changes from a local checkout of this repo instead, see
+"Option B" in the [README](../README.md#option-b-from-a-local-checkout-sdk-development).
 
 **Nothing else to configure.** Unlike some SDKs, there's no manifest entry, deep-link
 scheme, or ProGuard rule to add by hand — the checkout Activity, the `INTERNET`
