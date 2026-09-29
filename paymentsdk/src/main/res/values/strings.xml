@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pg_title_checkout">Complete payment</string>
+    <string name="pg_title_upi">Pay via UPI</string>
+    <string name="pg_title_net_banking">Net Banking</string>
+    <string name="pg_title_card">Card Payment</string>
+
+    <string name="pg_method_upi">UPI</string>
+    <string name="pg_method_upi_desc">Pay using any UPI app</string>
+    <string name="pg_method_card">Credit / Debit Card</string>
+    <string name="pg_method_card_desc">Visa, Mastercard, RuPay &amp; more</string>
+    <string name="pg_method_net_banking">Net Banking</string>
+    <string name="pg_method_net_banking_desc">All major banks supported</string>
+
+    <string name="pg_upi_apps_title">Pay using an app</string>
+    <string name="pg_upi_or_divider">OR</string>
+    <string name="pg_upi_vpa_label">UPI ID (e.g. yourname@bank)</string>
+    <string name="pg_upi_vpa_submit">Verify and pay</string>
+    <string name="pg_upi_no_apps">No UPI apps found on this device. You can still pay using a UPI ID below.</string>
+
+    <string name="pg_bank_select_title">Select your bank</string>
+
+    <string name="pg_card_number_label">Card number</string>
+    <string name="pg_card_name_label">Cardholder name</string>
+    <string name="pg_card_expiry_label">Expiry (MM/YY)</string>
+    <string name="pg_card_cvv_label">CVV</string>
+    <string name="pg_card_error_name">Enter the cardholder\'s name</string>
+    <string name="pg_card_security_note">Your card details are sent directly to the payment gateway and are never stored by this app.</string>
+    <string name="pg_card_pay_button">Pay securely</string>
+    <string name="pg_card_error_number">Enter a valid card number</string>
+    <string name="pg_card_error_expiry">Enter a valid, non-expired MM/YY date</string>
+    <string name="pg_card_error_cvv">Enter a valid CVV</string>
+
+    <string name="pg_upi_other_apps">Other apps</string>
+
+    <string name="pg_processing_default">Processing your payment…</string>
+
+    <string name="pg_result_success_title">Payment successful</string>
+    <string name="pg_result_pending_title">Payment pending</string>
+    <string name="pg_result_failed_title">Payment failed</string>
+    <string name="pg_result_cancelled_title">Payment cancelled</string>
+
+    <string name="pg_error_generic_title">Something went wrong</string>
+
+    <string name="pg_retry">Retry</string>
+    <string name="pg_cancel">Cancel</string>
+    <string name="pg_close">Close</string>
+
+    <string name="pg_cancel_confirm_title">Cancel payment?</string>
+    <string name="pg_cancel_confirm_message">Your payment has not been completed yet. Are you sure you want to cancel?</string>
+    <string name="pg_cancel_confirm_yes">Yes, cancel</string>
+    <string name="pg_cancel_confirm_no">Continue payment</string>
+
+    <string name="pg_content_desc_back">Back</string>
+    <string name="pg_content_desc_bank_icon">Bank icon</string>
+    <string name="pg_content_desc_upi_app_icon">App icon</string>
+    <string name="pg_content_desc_status_icon">Status icon</string>
+</resources>

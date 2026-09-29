@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/pg_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/pg_surface"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/pgMerchantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/pg_text_secondary"
+            android:textSize="13sp"
+            tools:text="Paying to Acme Store" />
+
+        <TextView
+            android:id="@+id/pgAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/pg_on_surface"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:text="₹499.00" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pgMethodsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:divider="@drawable/pg_divider"
+        android:showDividers="middle" />
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.PGSdk" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/pg_primary</item>
+        <item name="colorPrimaryDark">@color/pg_primary_dark</item>
+        <item name="colorOnPrimary">@color/pg_on_primary</item>
+        <item name="colorSecondary">@color/pg_primary</item>
+        <item name="android:windowBackground">@color/pg_background</item>
+        <item name="android:statusBarColor">@color/pg_primary_dark</item>
+    </style>
+
+    <style name="Theme.PGSdk.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary" />
+</resources>

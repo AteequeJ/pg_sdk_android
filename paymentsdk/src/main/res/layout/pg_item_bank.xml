@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="14dp">
+
+    <ImageView
+        android:id="@+id/pgBankIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/pg_content_desc_bank_icon"
+        android:src="@drawable/pg_ic_bank_placeholder" />
+
+    <TextView
+        android:id="@+id/pgBankName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/pg_on_surface"
+        android:textSize="15sp"
+        tools:text="HDFC Bank" />
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/pg_ic_chevron_right"
+        app:tint="@color/pg_text_secondary" />
+
+</LinearLayout>

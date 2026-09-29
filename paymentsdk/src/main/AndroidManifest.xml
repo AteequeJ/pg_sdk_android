@@ -1,0 +1,24 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Required from Android 11 (API 30) to detect installed UPI apps via
+         PackageManager#queryIntentActivities for the `upi://pay` intent. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="upi" />
+        </intent>
+    </queries>
+
+    <application>
+        <activity
+            android:name=".ui.checkout.PGCheckoutActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PGSdk"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+    </application>
+
+</manifest>

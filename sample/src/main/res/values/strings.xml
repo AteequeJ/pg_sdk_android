@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PG SDK Sample</string>
+    <string name="pg_sample_title">PG SDK Sample</string>
+    <string name="pg_sample_subtitle">Demonstrates integrating the paymentsdk module. Runs entirely against an in-process mock gateway -- no backend needed. See docs/INTEGRATION.md.</string>
+    <string name="pg_sample_pay_button">Pay ₹499.00</string>
+    <string name="pg_sample_status_launching">Launching checkout…</string>
+    <string name="pg_sample_result_success">Success! paymentId=%1$s</string>
+    <string name="pg_sample_result_pending">Payment pending.</string>
+    <string name="pg_sample_result_failed">Failed: %1$s</string>
+    <string name="pg_sample_result_cancelled">Cancelled.</string>
+</resources>
