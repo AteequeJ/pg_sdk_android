@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,20 +9,34 @@
     android:padding="32dp"
     android:background="@color/pg_background">
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/pg_primary" />
+        android:indeterminate="true"
+        app:indicatorColor="?attr/colorPrimary"
+        app:indicatorSize="56dp"
+        app:trackColor="?attr/colorPrimaryContainer"
+        app:trackCornerRadius="3dp"
+        app:trackThickness="5dp" />
 
     <TextView
         android:id="@+id/pgProcessingMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:textColor="@color/pg_text_secondary"
-        android:textSize="14sp"
+        android:textColor="@color/pg_on_surface"
+        android:textSize="17sp"
         tools:text="Confirming your payment…" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/pg_processing_hint"
+        android:textColor="@color/pg_text_secondary"
+        android:textSize="13sp" />
 
 </LinearLayout>

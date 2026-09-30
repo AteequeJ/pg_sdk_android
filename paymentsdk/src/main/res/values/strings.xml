@@ -55,4 +55,11 @@
     <string name="pg_content_desc_bank_icon">Bank icon</string>
     <string name="pg_content_desc_upi_app_icon">App icon</string>
     <string name="pg_content_desc_status_icon">Status icon</string>
+    <string name="pg_paying_to">Paying to</string>
+    <string name="pg_secure_checkout">Secure checkout</string>
+    <string name="pg_methods_title">Choose a payment method</string>
+    <string name="pg_secured_footer">Payments are secured with end-to-end encryption</string>
+    <string name="pg_upi_vpa_title">Pay using UPI ID</string>
+    <string name="pg_card_details_title">Enter card details</string>
+    <string name="pg_processing_hint">Please don\'t close the app or press back</string>
 </resources>

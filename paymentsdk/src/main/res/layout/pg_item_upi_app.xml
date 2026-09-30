@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="?attr/selectableItemBackground"
+    android:gravity="center_horizontal"
+    android:background="?attr/selectableItemBackgroundBorderless"
     android:clickable="true"
     android:focusable="true"
-    android:padding="12dp"
-    android:minWidth="84dp">
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="10dp">
 
-    <ImageView
-        android:id="@+id/pgAppIcon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/pg_content_desc_upi_app_icon"
-        android:src="@drawable/pg_ic_upi_placeholder" />
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/pg_bg_app_tile">
+
+        <ImageView
+            android:id="@+id/pgAppIcon"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/pg_content_desc_upi_app_icon"
+            android:src="@drawable/pg_ic_upi_placeholder" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/pgAppLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:gravity="center"
-        android:maxLines="2"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
         android:textColor="@color/pg_on_surface"
         android:textSize="12sp"
         tools:text="Google Pay" />

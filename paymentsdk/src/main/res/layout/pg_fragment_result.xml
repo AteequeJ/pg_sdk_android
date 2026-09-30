@@ -8,21 +8,30 @@
     android:padding="32dp"
     android:background="@color/pg_background">
 
-    <ImageView
-        android:id="@+id/pgResultIcon"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:contentDescription="@string/pg_content_desc_status_icon"
-        tools:src="@drawable/pg_ic_success" />
+    <FrameLayout
+        android:id="@+id/pgResultIconContainer"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:background="@drawable/pg_bg_status_circle"
+        tools:backgroundTint="@color/pg_success_container">
+
+        <ImageView
+            android:id="@+id/pgResultIcon"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/pg_content_desc_status_icon"
+            tools:src="@drawable/pg_ic_success" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/pgResultTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:textColor="@color/pg_on_surface"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         tools:text="@string/pg_result_success_title" />
 
@@ -32,9 +41,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center"
+        android:lineSpacingExtra="2dp"
         android:textColor="@color/pg_text_secondary"
         android:textSize="14sp"
         android:visibility="gone"
-        tools:text="Your payment reference is PAY123456" />
+        tools:text="Your payment reference is PAY123456"
+        tools:visibility="visible" />
 
 </LinearLayout>

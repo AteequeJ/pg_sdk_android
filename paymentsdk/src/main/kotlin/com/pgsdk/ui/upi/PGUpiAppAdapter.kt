@@ -1,9 +1,11 @@
 package com.pgsdk.ui.upi
 
 import android.view.LayoutInflater
+import android.content.res.ColorStateList
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.color.MaterialColors
 import com.pgsdk.R
 import com.pgsdk.databinding.PgItemUpiAppBinding
 import com.pgsdk.handler.PGUpiApp
@@ -37,13 +39,17 @@ internal class PGUpiAppAdapter(
 
         fun bind(app: PGUpiApp?, onAppSelected: (PGUpiApp?) -> Unit) {
             if (app != null) {
+                binding.pgAppIcon.imageTintList = null
                 binding.pgAppLabel.text = app.label
                 binding.pgAppIcon.setImageDrawable(
                     app.icon ?: ContextCompat.getDrawable(binding.root.context, R.drawable.pg_ic_upi_placeholder)
                 )
             } else {
                 binding.pgAppLabel.text = binding.root.context.getString(R.string.pg_upi_other_apps)
-                binding.pgAppIcon.setImageResource(R.drawable.pg_ic_upi_placeholder)
+                binding.pgAppIcon.setImageResource(R.drawable.pg_ic_more_apps)
+                binding.pgAppIcon.imageTintList = ColorStateList.valueOf(
+                    MaterialColors.getColor(binding.pgAppIcon, androidx.appcompat.R.attr.colorPrimary)
+                )
             }
             binding.root.setOnClickListener { onAppSelected(app) }
         }

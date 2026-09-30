@@ -54,6 +54,7 @@ internal class PGMethodSelectionFragment : Fragment() {
             val (title, subtitle) = titleAndSubtitleFor(method)
             row.pgMethodTitle.text = title
             row.pgMethodSubtitle.text = subtitle
+            row.pgMethodIcon.setImageResource(iconFor(method))
             row.root.setOnClickListener { viewModel.selectMethod(method) }
             binding.pgMethodsContainer.addView(row.root)
         }
@@ -64,6 +65,12 @@ internal class PGMethodSelectionFragment : Fragment() {
         PGPaymentMethod.CARD -> getString(R.string.pg_method_card) to getString(R.string.pg_method_card_desc)
         PGPaymentMethod.NET_BANKING ->
             getString(R.string.pg_method_net_banking) to getString(R.string.pg_method_net_banking_desc)
+    }
+
+    private fun iconFor(method: PGPaymentMethod): Int = when (method) {
+        PGPaymentMethod.UPI -> R.drawable.pg_ic_upi
+        PGPaymentMethod.CARD -> R.drawable.pg_ic_card
+        PGPaymentMethod.NET_BANKING -> R.drawable.pg_ic_bank_placeholder
     }
 
     override fun onDestroyView() {

@@ -6,12 +6,12 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pgsdk.R
 import com.pgsdk.core.PGPaymentContract
 import com.pgsdk.core.PGPaymentSDK
@@ -56,6 +56,10 @@ internal class PGCheckoutActivity : AppCompatActivity() {
         }
         request = extractedRequest
 
+        // Merchant theme override (must extend Theme.PGSdk); applied before super.onCreate
+        // so fragments restored from saved state inflate with it too.
+        runCatching { PGPaymentSDK.requireConfig().theme.styleRes }.getOrNull()?.let(::setTheme)
+
         super.onCreate(savedInstanceState)
         binding = PgActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -98,7 +102,7 @@ internal class PGCheckoutActivity : AppCompatActivity() {
     }
 
     private fun confirmCancel() {
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this)
             .setTitle(R.string.pg_cancel_confirm_title)
             .setMessage(R.string.pg_cancel_confirm_message)
             .setPositiveButton(R.string.pg_cancel_confirm_yes) { _, _ -> viewModel.cancel() }

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pg_primary">#1A73E8</color>
-    <color name="pg_primary_dark">#0D47A1</color>
+    <color name="pg_primary">#4F46E5</color>
+    <color name="pg_primary_dark">#3730A3</color>
     <color name="pg_on_primary">#FFFFFF</color>
-    <color name="pg_background">#FFFFFF</color>
-    <color name="pg_surface">#F5F6F8</color>
-    <color name="pg_on_surface">#1A1C1E</color>
-    <color name="pg_text_secondary">#5F6368</color>
-    <color name="pg_divider">#E1E3E6</color>
-    <color name="pg_success">#1E8E3E</color>
-    <color name="pg_error">#D93025</color>
-    <color name="pg_pending">#F9AB00</color>
+    <color name="pg_primary_container">#EEF0FF</color>
+
+    <color name="pg_background">#F6F7FB</color>
+    <color name="pg_surface">#FFFFFF</color>
+    <color name="pg_surface_variant">#F1F3F7</color>
+    <color name="pg_on_surface">#111827</color>
+    <color name="pg_text_secondary">#6B7280</color>
+    <color name="pg_outline">#E5E7EB</color>
+    <color name="pg_divider">#EEF0F3</color>
+
+    <color name="pg_success">#16A34A</color>
+    <color name="pg_success_container">#DCFCE7</color>
+    <color name="pg_error">#DC2626</color>
+    <color name="pg_error_container">#FEE2E2</color>
+    <color name="pg_pending">#D97706</color>
+    <color name="pg_pending_container">#FEF3C7</color>
 </resources>

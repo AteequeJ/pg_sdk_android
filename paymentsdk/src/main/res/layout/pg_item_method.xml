@@ -1,46 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.PGSdk.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    android:focusable="true"
-    android:paddingHorizontal="20dp"
-    android:paddingVertical="18dp">
+    android:focusable="true">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/pgMethodTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/pg_on_surface"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="UPI" />
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/pg_bg_icon_tile"
+            android:backgroundTint="?attr/colorPrimaryContainer">
 
-        <TextView
-            android:id="@+id/pgMethodSubtitle"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/pgMethodIcon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:tint="?attr/colorPrimary"
+                tools:src="@drawable/pg_ic_upi" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textColor="@color/pg_text_secondary"
-            android:textSize="13sp"
-            tools:text="Pay using any UPI app" />
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pgMethodTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/pg_on_surface"
+                android:textSize="16sp"
+                tools:text="UPI" />
+
+            <TextView
+                android:id="@+id/pgMethodSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/pg_text_secondary"
+                android:textSize="13sp"
+                tools:text="Pay using any UPI app" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/pg_ic_chevron_right"
+            app:tint="@color/pg_text_secondary" />
+
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/pg_ic_chevron_right"
-        app:tint="@color/pg_text_secondary" />
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

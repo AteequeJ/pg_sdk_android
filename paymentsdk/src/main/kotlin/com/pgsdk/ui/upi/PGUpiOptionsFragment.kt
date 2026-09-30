@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.pgsdk.databinding.PgFragmentUpiOptionsBinding
 import com.pgsdk.ui.checkout.PGCheckoutUiState
 import com.pgsdk.ui.checkout.PGCheckoutViewModel
@@ -34,8 +34,7 @@ internal class PGUpiOptionsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.pgUpiAppsRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.pgUpiAppsRecyclerView.layoutManager = GridLayoutManager(requireContext(), APP_GRID_COLUMNS)
         binding.pgUpiAppsRecyclerView.adapter = adapter
 
         binding.pgVpaSubmitButton.setOnClickListener {
@@ -54,7 +53,7 @@ internal class PGUpiOptionsFragment : Fragment() {
 
     private fun render(state: PGCheckoutUiState.UpiOptions) {
         val hasApps = state.installedApps.isNotEmpty()
-        binding.pgUpiAppsRecyclerView.isVisible = hasApps
+        binding.pgUpiAppsCard.isVisible = hasApps
         binding.pgUpiNoAppsMessage.isVisible = !hasApps
         if (hasApps) adapter.submit(state.installedApps)
     }
@@ -66,6 +65,8 @@ internal class PGUpiOptionsFragment : Fragment() {
     }
 
     companion object {
+        private const val APP_GRID_COLUMNS = 4
+
         fun newInstance() = PGUpiOptionsFragment()
     }
 }

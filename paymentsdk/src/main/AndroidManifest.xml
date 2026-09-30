@@ -4,11 +4,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!-- Required from Android 11 (API 30) to detect installed UPI apps via
-         PackageManager#queryIntentActivities for the `upi://pay` intent. -->
+         PackageManager#queryIntentActivities for the `upi://pay` intent. The host must be
+         declared: UPI apps filter on `upi://pay`, and a scheme-only query (`upi:`) fails
+         their host match, leaving them invisible. -->
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="upi" />
+            <data android:scheme="upi" android:host="pay" />
         </intent>
     </queries>
 

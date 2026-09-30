@@ -11,9 +11,16 @@ internal object PGUpiAppResolver {
     /** A generic, unaddressed `upi://pay` intent used purely to query installed handlers. */
     private fun probeIntent() = Intent(Intent.ACTION_VIEW, Uri.parse("upi://pay"))
 
+    /**
+     * Flags are deliberately 0, not `MATCH_DEFAULT_ONLY`: several UPI apps omit
+     * `CATEGORY_DEFAULT` from their `upi://` filter and would otherwise be dropped.
+     */
+    private fun queryHandlers(packageManager: PackageManager) =
+        packageManager.queryIntentActivities(probeIntent(), 0)
+
     fun resolveInstalledApps(context: Context): List<PGUpiApp> {
         val packageManager = context.packageManager
-        val activities = packageManager.queryIntentActivities(probeIntent(), PackageManager.MATCH_DEFAULT_ONLY)
+        val activities = queryHandlers(packageManager)
         return activities
             .map { resolveInfo ->
                 PGUpiApp(
@@ -27,7 +34,5 @@ internal object PGUpiAppResolver {
     }
 
     fun hasAnyUpiApp(context: Context): Boolean =
-        context.packageManager
-            .queryIntentActivities(probeIntent(), PackageManager.MATCH_DEFAULT_ONLY)
-            .isNotEmpty()
+        queryHandlers(context.packageManager).isNotEmpty()
 }

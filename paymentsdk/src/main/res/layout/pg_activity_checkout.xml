@@ -10,10 +10,10 @@
         android:id="@+id/pgToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/pg_primary"
+        android:background="@color/pg_background"
         app:title="@string/pg_title_checkout"
-        app:titleTextColor="@color/pg_on_primary"
-        app:navigationIconTint="@color/pg_on_primary" />
+        app:titleTextAppearance="@style/TextAppearance.PGSdk.ToolbarTitle"
+        app:navigationIconTint="@color/pg_on_surface" />
 
     <FrameLayout
         android:id="@+id/pgFragmentContainer"
